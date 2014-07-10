@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(889, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11338 $"):sub(12, -3))
 mod:SetCreatureID(74790)
@@ -35,6 +36,11 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 150677 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnMoltenBlast:Show()
 		specWarnMoltenBlast:Show(args.sourceName)
 	elseif spellId == 150784 then
@@ -42,6 +48,9 @@ function mod:SPELL_CAST_START(args)
 		specWarnMagmaEruptionCast:Show()
 		timerMagmaEruptionCD:Start()
 	elseif spellId == 150755 then
+		if (not mod:IsHealer())
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
+		end
 		warnUnstableSlag:Show()
 		specWarnUnstableSlag:Show()
 		timerUnstableSlagCD:Start()
@@ -50,6 +59,7 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 150784 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		specWarnMagmaEruption:Show()
 	end
 end

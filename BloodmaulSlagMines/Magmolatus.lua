@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(893, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11336 $"):sub(12, -3))
 mod:SetCreatureID(74366, 74475)--74366 Forgemaster Gog'duh, 74475 Magmolatus
@@ -66,12 +67,23 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 149997 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnFirestorm:Show()
 		specWarnFirestorm:Show(args.sourceName)
 	elseif spellId == 149975 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		warnDancingFlames:CombinedShow(0.3, args.destName)--heroic is 2 targets so combined.
 		specWarnDancingFlames:Show(args.destName)--This will only warn for one of em though but still good alert for sound, at that point healer can find 2nd target off reg warn or frames
 	elseif spellId == 150032 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		warnWitheringFlames:Show(args.destName)
 		specWarnWitheringFlames:Show(args.destName)
 	end

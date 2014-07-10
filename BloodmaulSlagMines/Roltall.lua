@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(887, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11337 $"):sub(12, -3))
 mod:SetCreatureID(75786)
@@ -84,6 +85,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnHeatWave:Show()
 		timerBurningSlagCD:Start()
 	elseif spellId == 152939 and not self.vb.burningSlagCast then--Burning Slag
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		self.vb.burningSlagCast = true
 		warnBurningSlag:Show()
 		specWarnBurningSlag:Show()
