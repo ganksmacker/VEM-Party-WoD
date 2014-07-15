@@ -57,8 +57,11 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 			elseif cid == 74571 then--Calamity
 				specWarnCalamity:Show()
 			elseif cid == 74475 then--Magmolatus
+				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
 				specWarnMagmolatus:Show()
 				timerMoltenImpactCD:Start(5)
+			elseif cid == 74579 then--Molten Elemental
+				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
 			end
 		end
 	end
