@@ -1,5 +1,6 @@
 VEM-Party-WoD
 =============
+Finished: BMSM, UBRS
 
 DBM w/ voice warning for WoW 6.0
 

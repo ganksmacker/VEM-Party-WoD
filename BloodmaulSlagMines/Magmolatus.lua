@@ -28,6 +28,8 @@ local specWarnMoltenImpact		= mod:NewSpecialWarningSpell(150038, nil, nil, nil, 
 local specWarnDancingFlames		= mod:NewSpecialWarningDispel(149975, mod:IsHealer())
 local specWarnWitheringFlames	= mod:NewSpecialWarningDispel(150032, mod:IsHealer())
 
+local specWarnSlagSmash		= mod:NewSpecialAnnounce(150023, 3, nil, mod:IsMelee)
+
 local timerMoltenImpactCD		= mod:NewNextTimer(21.5, 150038)
 
 local activeAddGUIDS = {}
@@ -53,15 +55,15 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 			activeAddGUIDS[unitGUID] = true
 			--Ruination#Creature:0:3314:1175:11531:74570
 			if cid == 74570 then--Ruination
+				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 				specWarnRuination:Show()
 			elseif cid == 74571 then--Calamity
 				specWarnCalamity:Show()
+				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 			elseif cid == 74475 then--Magmolatus
 				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
 				specWarnMagmolatus:Show()
 				timerMoltenImpactCD:Start(5)
-			elseif cid == 74579 then--Molten Elemental
-				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
 			end
 		end
 	end
@@ -97,5 +99,10 @@ function mod:SPELL_CAST_START(args)
 		warnMoltenImpact:Show()
 		specWarnMoltenImpact:Show()
 		timerMoltenImpactCD:Start()
+	elseif args.spellId == 150023 then
+		specWarnSlagSmash:Show()
+		if mod:IsMelee() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		end
 	end
 end

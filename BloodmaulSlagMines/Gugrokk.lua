@@ -50,6 +50,7 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 150755 then
 		if (not mod:IsHealer())
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
+			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
 		end
 		warnUnstableSlag:Show()
 		specWarnUnstableSlag:Show()

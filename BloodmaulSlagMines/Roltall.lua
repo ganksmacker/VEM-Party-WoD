@@ -75,12 +75,18 @@ function mod:SPELL_CAST_START(args)
 		self.vb.boulderCount = self.vb.boulderCount + 1
 		warnFieryBoulder:Show(self.vb.boulderCount)
 		specWarnFieryBoulder:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\firewall.mp3")
 		if self.vb.boulderCount == 3 then
 			timerHeatWaveCD:Start()
 		else
 			timerFieryBoulderCD:Start(3.5)--Not to be confused with cast timer, that's 3 seconds. The previous meteor WILL hit ground before next cast.
 		end
 	elseif spellId == 152940 then--Heat Wave
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\healall.mp3")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\firestorm.mp3")
+		end
 		warnHeatWave:Show()
 		specWarnHeatWave:Show()
 		timerBurningSlagCD:Start()
