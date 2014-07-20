@@ -88,11 +88,19 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 154221 then
 		warnFelblast:Show()
 		specWarnFelblast:Show(args.sourceName)
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 	end
 end
 
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 164081 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
+		else
 		warnSummonFelguard:Show()
 		specWarnSummonFelguard:Show()
 	end

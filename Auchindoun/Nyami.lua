@@ -31,6 +31,9 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 154477 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		warnSWP:Show(args.destName)
 		specWarnSWP:Show(args.destName)
 	end
