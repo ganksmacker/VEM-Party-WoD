@@ -2,7 +2,7 @@ local mod	= DBM:NewMod(888, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
 local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
-mod:SetRevision(("$Revision: 11336 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11424 $"):sub(12, -3))
 mod:SetCreatureID(74787)
 mod:SetEncounterID(1653)
 mod:SetZone()
@@ -25,7 +25,7 @@ local specWarnRaiseMiners		= mod:NewSpecialWarningSwitch(150801, mod:IsTank())
 local specWarnCrushingLeap		= mod:NewSpecialWarningTarget(150751, false)
 local specWarnEarthCrush		= mod:NewSpecialWarningYou(153679)
 local yellEarthCrush			= mod:NewYell(153679)
-local specWarnWildSlam			= mod:NewSpecialWarningRun(150753, mod:IsMelee())
+local specWarnWildSlam			= mod:NewSpecialWarningSpell(150753, mod:IsMelee() or mod:IsHealer(), nil, nil, 2)--not avoidable. melee just eat it.
 
 --In logs he didn't have any consistent timings, they were all wildly variable, no useful timers
 
@@ -60,7 +60,7 @@ function mod:SPELL_CAST_START(args)
 		warnRaiseMiners:Show()
 		specWarnRaiseMiners:Show()
 	elseif spellId == 153679 then
-		self:BossTargetScanner(74787, "EarthCrushTarget", 0.1, 12)--Adjust timing if not reliable
+		self:BossTargetScanner(74787, "EarthCrushTarget", 0.1, 16)--Adjust timing if not reliable
 	elseif spellId == 150753 then
 		warnWildSlam:Show()
 		specWarnWildSlam:Show()
