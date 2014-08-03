@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1216, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11381 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11427 $"):sub(12, -3))
 mod:SetCreatureID(75927)
 mod:SetEncounterID(1678)
 mod:SetZone()
@@ -17,11 +17,11 @@ mod:RegisterEventsInCombat(
 
 local warnCurtainOfFlame			= mod:NewTargetAnnounce(153396, 4)
 local warnClawsOfArgus				= mod:NewSpellAnnounce(153764, 3)
-local warnFelblast					= mod:NewCastAnnounce(154221, 3, nil, not mod:IsHealer())--Spammy but still important. May improve by checking if interrupt spells on CD, if are, don't show warning, else, spam warning because interrupt SHOULD be on CD
+local warnFelblast					= mod:NewCastAnnounce(154221, 3, nil, nil, not mod:IsHealer())--Spammy but still important. May improve by checking if interrupt spells on CD, if are, don't show warning, else, spam warning because interrupt SHOULD be on CD
 local warnSummonFelguard			= mod:NewSpellAnnounce(164081, 3, 56285, not mod:IsHealer())
 
-local specWarnCurtainOfFlame		= mod:NewSpecialWarningYou(153396)
-local specWarnCurtainOfFlameNear	= mod:NewSpecialWarningClose(153396, mod:IsDps())
+local specWarnCurtainOfFlame		= mod:NewSpecialWarningMoveAway(153396)
+local specWarnCurtainOfFlameNear	= mod:NewSpecialWarningClose(153396)
 local specWarnClawsOfArgus			= mod:NewSpecialWarningSpell(153764)
 local specWarnSummonFelguard		= mod:NewSpecialWarningSwitch(164081, mod:IsTank())
 local specWarnFelblast				= mod:NewSpecialWarningInterrupt(154221, not mod:IsHealer())--Spammy but still important. May improve by checking if interrupt spells on CD, if are, don't show warning, else, spam warning because interrupt SHOULD be on CD
@@ -45,6 +45,12 @@ function mod:OnCombatStart(delay)
 	self.vb.debuffCount = 0
 	timerCurtainOfFlameCD:Start(15-delay)
 	timerClawsOfArgusCD:Start(27-delay)
+end
+
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -88,19 +94,11 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 154221 then
 		warnFelblast:Show()
 		specWarnFelblast:Show(args.sourceName)
-		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		else
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
-		end
 	end
 end
 
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 164081 then
-		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
-		else
 		warnSummonFelguard:Show()
 		specWarnSummonFelguard:Show()
 	end
