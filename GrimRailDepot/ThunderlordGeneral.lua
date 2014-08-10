@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1133, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11438 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11452 $"):sub(12, -3))
 mod:SetCreatureID(80005)
 mod:SetEncounterID(1736)
 mod:SetZone()
@@ -33,7 +33,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 162066 then
-		warnWhirlwindingAxe:Show()
+		warnFreezingSnare:Show()
 		specWarnFreezingSnare:Show()
 		timerFreezingSnareCD:Start()
 		--Because using SPELL_CAST_SUCCESS is a bit ugly and it's always 5-6 sec after trap anyways

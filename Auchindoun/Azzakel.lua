@@ -1,7 +1,8 @@
 local mod	= DBM:NewMod(1216, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
-mod:SetRevision(("$Revision: 11427 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11462 $"):sub(12, -3))
 mod:SetCreatureID(75927)
 mod:SetEncounterID(1678)
 mod:SetZone()
@@ -62,7 +63,15 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 153396 then
 		self.vb.debuffCount = self.vb.debuffCount + 1
-		warnCurtainOfFlame:CombinedShow(0.5, args.destName)
+		local targetname = args.destName
+		warnCurtainOfFlame:CombinedShow(0.5, targetname)
+		if args:IsPlayer() then
+			specWarnCurtainOfFlame:Show()
+		else
+			if self:CheckNearby(5, targetname) then
+				specWarnCurtainOfFlameNear:Show(targetname)
+			end
+		end
 		if self.Options.RangeFrame then
 			if UnitDebuff("player", curtainDebuff) then--You have debuff, show everyone
 				DBM.RangeCheck:Show(5, nil)
@@ -92,6 +101,11 @@ function mod:SPELL_CAST_START(args)
 		specWarnClawsOfArgus:Show()
 		timerClawsOfArgusCD:Start()
 	elseif spellId == 154221 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnFelblast:Show()
 		specWarnFelblast:Show(args.sourceName)
 	end

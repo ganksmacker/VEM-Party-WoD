@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1226, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11332 $"):sub(12, -3))
 mod:SetCreatureID(76413)
@@ -11,7 +12,7 @@ mod.disableHealthCombat = true
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 166168",
-	"SPELL_AURA_APPLIED DOSE 166168",
+	"SPELL_AURA_APPLIED_DOSE 166168",
 	"SPELL_AURA_REMOVED 166168",
 	"SPELL_AURA_REMOVED_DOSE 166168"
 )

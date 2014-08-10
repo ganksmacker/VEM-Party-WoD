@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11438 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11452 $"):sub(12, -3))
 mod:SetCreatureID(79545)
 mod:SetEncounterID(1732)
 mod:SetZone()
@@ -38,7 +38,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 160680 then
-		warnShockwave:Show()
+		warnReloading:Show()
 		timerReloading:Start()
 	end
 end
