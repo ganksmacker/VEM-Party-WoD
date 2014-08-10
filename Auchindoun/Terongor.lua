@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1225, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11427 $"):sub(12, -3))
 mod:SetCreatureID(77734)
@@ -82,14 +83,23 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnDoom:Show(args.destName)
 		specWarnDoom:Show(args.destName)
 	elseif spellId == 156842 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		warnCorruption:Show(args.destName)
 		specWarnCorruption:Show(args.destName)
 	elseif spellId == 156854 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		elseif (not mod:IsHealer())
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnDrainLife:Show()
 		specWarnDrainLife:Show(args.sourceName)
 	elseif spellId == 156921 then
 		warnSeedOfcorruption:Show(args.destName)
 		if args:IsPlayer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 			specWarnSeedOfCorruption:Show()
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(10)
@@ -114,6 +124,11 @@ function mod:SPELL_CAST_START(args)
 		timerChaosWaveCD:Start()
 		self:BossTargetScanner(77734, "ChaosWaveTarget", 0.1, 16)--Timing not verified, but Boss DOES look at leap target
 	elseif spellId == 156975 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		elseif (not mod:IsHealer())
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnChaosBolt:Show()
 		specWarnChaosBolt:Show(args.sourceName)
 	elseif spellId == 156857 then

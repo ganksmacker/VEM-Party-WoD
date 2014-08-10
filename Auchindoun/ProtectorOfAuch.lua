@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1185, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11377 $"):sub(12, -3))
 mod:SetCreatureID(75839)--Soul Construct
@@ -48,6 +49,7 @@ end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 161457 and destGUID == UnitGUID("player") and self:AntiSpam() then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		specWarnSanctifiedGround:Show()
 	end
 end

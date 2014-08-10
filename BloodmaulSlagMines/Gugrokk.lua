@@ -38,7 +38,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 150677 then
 		if mod:IsTank() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		else
+		elseif (not mod:IsHealer())
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
 		end
 		warnMoltenBlast:Show()

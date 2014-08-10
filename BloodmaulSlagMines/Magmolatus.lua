@@ -74,7 +74,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if spellId == 149997 then
 		if mod:IsTank() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		else
+		elseif (not mod:IsHealer())
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
 		end
 		warnFirestorm:Show()

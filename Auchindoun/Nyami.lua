@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1186, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11425 $"):sub(12, -3))
 mod:SetCreatureID(76177)
@@ -30,6 +31,9 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 154477 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		warnSWP:Show(args.destName)
 		specWarnSWP:Show(args.destName)
 	end
@@ -42,6 +46,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnSoulVessel:Show()
 		timerSoulVesselCD:Start()
 	elseif spellId == 153994 then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 		warnTornSpirits:Show()
 		specWarnTornSpirits:Show()
 	end
