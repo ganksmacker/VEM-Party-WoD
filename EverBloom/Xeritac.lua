@@ -1,12 +1,12 @@
 local mod	= DBM:NewMod(1209, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11482 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11483 $"):sub(12, -3))
 mod:SetCreatureID(84550)
 mod:SetEncounterID(1752)--TODO: VERIFY, "Boss 4" isn't descriptive enough
 mod:SetZone()
 
-mod:RegisterCombat("combat")
+mod:RegisterCombat("combat_emote", L.Pull)--IEEU doesn't always work, so emote is fallback.
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 169248 169233 169382",
