@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(968, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11380 $"):sub(12, -3))
 mod:SetCreatureID(76266)
@@ -42,6 +43,11 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 154055 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+		elseif (not mod:IsHealer())
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+		end
 		warnShielding:Show(args.destName)
 	end
 end
@@ -55,6 +61,7 @@ end
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, _, _, _, overkill)
 	if spellId == 154043 and destGUID == UnitGUID("player") and self:AntiSpam(2) then
 		specWarnLensFlare:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
@@ -72,6 +79,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 153954 then--Cast Down (4-5 sec before pre warning)
 		specWarnCastDownSoon:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 	elseif spellId == 165834 then--Force Demon Creator to Ride Me
 		--TODO, see if victom detectable here instead
 		specWarnCastDown:Show()

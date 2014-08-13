@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1140, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11370 $"):sub(12, -3))
 mod:SetCreatureID(75452)
@@ -59,6 +60,7 @@ end
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg:find("spell:153804") then--Slightly faster than combat log
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		warnInhale:Show()
 		specWarnInhale:Show()
 		soundInhale:Play()

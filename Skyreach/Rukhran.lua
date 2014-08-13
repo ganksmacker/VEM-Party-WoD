@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(967, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11371 $"):sub(12, -3))
 mod:SetCreatureID(76143)
@@ -27,6 +28,7 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 153810 then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 		warnSolarFlare:Show()
 		specWarnSolarFlare:Show()
 		timerSolarFlare:Start()

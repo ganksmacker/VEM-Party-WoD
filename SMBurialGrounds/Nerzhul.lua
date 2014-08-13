@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1160, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11370 $"):sub(12, -3))
 mod:SetCreatureID(76407)
@@ -31,6 +32,9 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 154442 then
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		end
 		warnMalevolence:Show()
 		specWarnMalevolence:Show()
 	end
