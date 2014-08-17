@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1210, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11483 $"):sub(12, -3))
 mod:SetCreatureID(83846)
@@ -38,6 +39,9 @@ function mod:SPELL_CAST_START(args)
 		warnColossalBlow:Show()
 		specWarnColossalBlow:Show()
 	elseif spellId == 169613 then
+	if mod:IsDps() then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
+	end
 		warnGenesis:Show()
 		specWarnGenesis:Show()
 		timerGenesis:Start()

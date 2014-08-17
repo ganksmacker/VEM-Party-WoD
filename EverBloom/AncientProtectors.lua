@@ -1,9 +1,11 @@
 local mod	= DBM:NewMod(1207, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
-mod:SetRevision(("$Revision: 11480 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11512 $"):sub(12, -3))
 mod:SetCreatureID(83894, 83892, 83893)--Dulhu 83894, Gola 83892, Telu
 mod:SetEncounterID(1757)
+mod:SetBossHPInfoToHighest()
 
 mod:RegisterCombat("combat")
 
@@ -44,6 +46,9 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 168041 then
 		specWarnBriarskin:Show(args.sourceName)
 	elseif spellId == 168105 then
+		if mod:IsHealer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+		end
 		specWarnRapidTides:Show(args.sourceName)
 	elseif spellId == 168105 then
 		warnSlash:Show()

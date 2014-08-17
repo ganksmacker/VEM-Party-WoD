@@ -1,55 +1,38 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11318 $"):sub(12, -3))
---mod:SetCreatureID(62205)
+mod:SetRevision(("$Revision: 11511 $"):sub(12, -3))
+mod:SetCreatureID(81297, 81305)
 mod:SetEncounterID(1749)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
---[[
+
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_INTERRUPT"
+	"SPELL_AURA_APPLIED 164426",
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
-local warnGustingWinds		= mod:NewSpellAnnounce(121282, 4)
-local warnResin				= mod:NewTargetAnnounce(121447, 4)
+local warnBurningArrows					= mod:NewSpellAnnounce(164635, 3)
+local warnRecklessProvocation			= mod:NewTargetAnnounce(164426, 3)
 
-local specWarnGustingWinds	= mod:NewSpecialWarningSpell(121282, nil, nil, nil, true)
-local specWarnResin			= mod:NewSpecialWarningYou(121447)
-local specWarnCausticPitch	= mod:NewSpecialWarningMove(121443)
+local specWarnBurningArrows				= mod:NewSpecialWarningSpell(164635, nil, nil, nil, true)
+local specWarnRecklessProvocation		= mod:NewSpecialWarningReflect(164426)
 
-local timerResinCD			= mod:NewCDTimer(20, 121447)--20-25 sec variation
-
-local windsActive = false
-
-function mod:OnCombatStart(delay)
-	windsActive = false
-	timerResinCD:Start(7-delay)
-end
+local timerBurningArrowsCD				= mod:NewNextTimer(25, 164635)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 121447 then
-		warnResin:Show(args.destName)
-		if args:IsPlayer() then
-			specWarnResin:Show()
-		end
-	elseif args.spellId == 121443 then
-		if args:IsPlayer() then
-			specWarnCausticPitch:Show()
-		end
-	elseif args.spellId == 121282 and not windsActive then
-		windsActive = true
-		timerResinCD:Cancel()
-		warnGustingWinds:Show()
-		specWarnGustingWinds:Show()
+	if args.spellId == 164426 then
+		warnRecklessProvocation:Show(args.destName)
+		specWarnRecklessProvocation:Show(args.destName)
 	end
 end
 
-function mod:SPELL_INTERRUPT(args)
-	if (type(args.extraSpellId) == "number" and args.extraSpellId == 121282) and self:AntiSpam() then
-		windsActive = false
-		timerResinCD:Start(10)
+--Not detectable in phase 1. Seems only cleanly detectable in phase 2, in phase 1 boss has no "boss" unitid so cast hidden.
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 164635 then
+		warnBurningArrows:Show()
+		specWarnBurningArrows:Show()
+		timerBurningArrowsCD:Start()
 	end
-end--]]
+end

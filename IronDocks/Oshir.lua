@@ -1,67 +1,41 @@
 local mod	= DBM:NewMod(1237, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 11318 $"):sub(12, -3))
---mod:SetCreatureID(61485)
+mod:SetRevision(("$Revision: 11511 $"):sub(12, -3))
+mod:SetCreatureID(79852)
 mod:SetEncounterID(1750)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
---[[
+
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_START"
+	"SPELL_CAST_START 163054",
+	"SPELL_AURA_APPLIED 162415"
 )
 
-local warnBladeRush			= mod:NewSpellAnnounce(124283, 3)
-local warnTempest			= mod:NewSpellAnnounce(119875, 3)
-local warnBulwark			= mod:NewSpellAnnounce(119476, 3)
+--TODO, Roar cd 37 seconds? Verify
+local warnRoar				= mod:NewSpellAnnounce(163054, 3)
+local warnTimeToFeed		= mod:NewSpellAnnounce(162415, 3)
 
-local specWarnTempest		= mod:NewSpecialWarningSpell(119875, mod:IsHealer())
-local specWarnBulwark		= mod:NewSpecialWarningSpell(119476, nil, nil, nil, true)
+local specWarnRoar			= mod:NewSpecialWarningSpell(163054, nil, nil, nil, true)
+local specWarnTimeToFeed	= mod:NewSpecialWarningTarget(162415, mod:IsHealer())
 
-local timerBladeRushCD		= mod:NewCDTimer(12, 124283)--12-20sec variation
-local timerTempestCD		= mod:NewCDTimer(43, 119875)--Tempest has a higher cast priority than blade rush, if it's do, it'll delay blade rush.
-
-mod:AddBoolOption("HealthFrame", true)
-
-local phase = 1
+--local timerTimeToFeedCD		= mod:NewCDTimer(30, 162415, nil, mod:IsTank() or mod:IsHealer())--VERIFY
 
 function mod:OnCombatStart(delay)
-	phase = 1
-	timerBladeRushCD:Start(-delay)
+--	timerTimeToFeedCD:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 119476 then
-		self:ShowShieldHealthBar(args.destGUID, args.spellName, 1500000)
-		phase = phase + 1
-		warnBulwark:Show()
-		specWarnBulwark:Show()
-		timerBladeRushCD:Cancel()
-		timerTempestCD:Cancel()
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 119476 then--When bullwark breaks, he will instantly cast either tempest or blade rush, need more logs to determine if it's random or set.
-		self:RemoveShieldHealthBar(args.destGUID)
+	if args.spellId == 162415 then
+		warnTimeToFeed:Show(args.destName)
+		specWarnTimeToFeed:Show(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 124283 then--he do not target anything. so can't use target scan.
-		warnBladeRush:Show()
-		timerBladeRushCD:Start()
-	elseif args.spellId == 119875 then
-		warnTempest:Show()
-		specWarnTempest:Show()
-		timerBladeRushCD:Start(7)--always 7-7.5 seconds after tempest.
-		if phase == 2 then
-			timerTempestCD:Start(33)--seems to be cast more often between 66-33% health. (might be 100-33 but didn't get 2 casts before first bulwark)
-		else
-			timerTempestCD:Start()
-		end
+	if args.spellId == 163054 then--he do not target anything. so can't use target scan.
+		warnRoar:Show()
+		specWarnRoar:Show()
 	end
-end--]]
+end

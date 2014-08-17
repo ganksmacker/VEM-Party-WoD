@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1214, "DBM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11483 $"):sub(12, -3))
 mod:SetCreatureID(81522)
@@ -52,8 +53,10 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
 	if spellId == 169495 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		specWarnLivingLeaves:Show()
 	elseif spellId == 164294 and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
 		specWarnUncheckedGrowth:Show()
 	end
 end
@@ -66,6 +69,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)--Message doesn't matter, it occurs only for one thing during this fight
+	if mod:IsTank() then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
+	end
 	warnUncheckedGrowth:Show()
 	specWarnUncheckedGrowthAdd:Show()
 end
