@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11511 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
@@ -23,6 +24,10 @@ local timerBurningArrowsCD				= mod:NewNextTimer(25, 164635)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 164426 then
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\stopattack.mp3")
+		sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countthree.mp3")
+		sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\counttwo.mp3")
+		sndWOP:Schedule(4, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countone.mp3")
 		warnRecklessProvocation:Show(args.destName)
 		specWarnRecklessProvocation:Show(args.destName)
 	end

@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod(1238, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11511 $"):sub(12, -3))
 mod:SetCreatureID(83612)
@@ -37,8 +38,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnRapidFire:Show(args.destname)
 		timerRapidFireCD:Start()
 		if args:IsPlayer() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runout.mp3")
 			specWarnRapidFire:Show()
 			yellRapidFire:Yell()
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")		
 		end
 	end
 end

@@ -40,6 +40,9 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 155620 then
+		if mod:CanRemoveEnrage() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\trannow.mp3") --sound should change to RemoveEnrage
+		end
 		warnBurningRage:Show(args.destName, args.amount or 1)
 		specWarnBurningRage:Show(args.destName)
 	elseif spellId == 167203 then
