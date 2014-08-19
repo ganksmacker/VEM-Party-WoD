@@ -2,7 +2,7 @@ local mod	= DBM:NewMod(1138, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
-mod:SetRevision(("$Revision: 11518 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11534 $"):sub(12, -3))
 mod:SetCreatureID(77803, 77816)
 mod:SetEncounterID(1715)
 mod:SetZone()
@@ -38,7 +38,7 @@ mod.vb.SlamCast = 0
 local function getBorkaID()
 	for i = 1, 2 do
 		local uId = "boss"..i
-		if self:GetUnitCreatureId(uId) == 77816 then
+		if mod:GetUnitCreatureId(uId) == 77816 then
 			borkaID = uId
 			return
 		end
