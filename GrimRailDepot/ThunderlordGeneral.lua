@@ -2,7 +2,7 @@ local mod	= DBM:NewMod(1133, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
 local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
-mod:SetRevision(("$Revision: 11518 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 11549 $"):sub(12, -3))
 mod:SetCreatureID(80005)
 mod:SetEncounterID(1736)
 mod:SetZone()
@@ -20,6 +20,7 @@ mod:RegisterEventsInCombat(
 
 local warnFreezingSnare			= mod:NewTargetAnnounce(162066, 3)
 local warnSpinningSpear			= mod:NewSpellAnnounce(162058, 3)
+local warnMark					= mod:NewTargetAnnounce(163447, 3)
 
 local specWarnFreezingSnare		= mod:NewSpecialWarningYou(162066)
 local specWarnFreezingSnareNear	= mod:NewSpecialWarningClose(162066)
