@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11582 $"):sub(12, -3))
 mod:SetCreatureID(79545)
@@ -85,7 +85,7 @@ function mod:UNIT_TARGETABLE_CHANGED()
 		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\ptwo.mp3")
 		warnPhase2:Show()
 	elseif self.vb.phase == 3 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\pthree.mp3"
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\pthree.mp3")
 		warnPhase3:Show()
 	end
 end

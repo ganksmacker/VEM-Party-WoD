@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(889, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11380 $"):sub(12, -3))
 mod:SetCreatureID(74790)
@@ -38,7 +38,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 150677 then
 		if mod:IsTank() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		elseif (not mod:IsHealer())
+		elseif (not mod:IsHealer()) then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
 		end
 		warnMoltenBlast:Show()
@@ -48,7 +48,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnMagmaEruptionCast:Show()
 		timerMagmaEruptionCD:Start()
 	elseif spellId == 150755 then
-		if (not mod:IsHealer())
+		if (not mod:IsHealer()) then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
 			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
 		end

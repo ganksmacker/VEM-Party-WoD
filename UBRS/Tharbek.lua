@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1228, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11380 $"):sub(12, -3))
 mod:SetCreatureID(79912, 80098)--80098 is mount(Ironbarb Skyreaver), 79912 is boss

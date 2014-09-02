@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(893, "DBM-Party-WoD", 2, 385)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11520 $"):sub(12, -3))
 mod:SetCreatureID(74366, 74475)--74366 Forgemaster Gog'duh, 74475 Magmolatus
@@ -80,7 +80,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if spellId == 149997 then
 		if mod:IsTank() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		elseif (not mod:IsHealer())
+		elseif (not mod:IsHealer()) then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
 		end
 		warnFirestorm:Show()

@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1225, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11517 $"):sub(12, -3))
 mod:SetCreatureID(77734)
@@ -192,7 +192,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if spellId == 156854 then
 		if mod:IsTank() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
-		elseif (not mod:IsHealer())
+		elseif (not mod:IsHealer()) then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
 		end
 		warnDrainLife:Show(args.destName)

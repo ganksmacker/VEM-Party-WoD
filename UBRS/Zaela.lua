@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1234, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
+local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
 
 mod:SetRevision(("$Revision: 11542 $"):sub(12, -3))
 mod:SetCreatureID(77120)
