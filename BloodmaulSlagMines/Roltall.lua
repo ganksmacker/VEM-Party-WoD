@@ -47,7 +47,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.boulderCount = self.vb.boulderCount + 1
 		warnFieryBoulder:Show(self.vb.boulderCount)
 		specWarnFieryBoulder:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\firewall.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\firewall.mp3") --firerock?
 		if self.vb.boulderCount == 3 then
 			timerHeatWaveCD:Start()
 			self.vb.boulderCount = 0
@@ -58,7 +58,7 @@ function mod:SPELL_CAST_START(args)
 		if mod:IsHealer() then
 			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\healall.mp3")
 		else
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\firestorm.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\wwsoon.mp3")
 		end
 		warnHeatWave:Show()
 		specWarnHeatWave:Show()

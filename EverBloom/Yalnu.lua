@@ -38,13 +38,17 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 169179 then
 		warnColossalBlow:Show()
 		specWarnColossalBlow:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\shockwave.mp3")
 	elseif spellId == 169613 then
-	if mod:IsDps() then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
-	end
 		warnGenesis:Show()
 		specWarnGenesis:Show()
 		timerGenesis:Start()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\ex_so_fscq.mp3")
+		sndWOP:Schedule(10, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countfive.mp3")
+		sndWOP:Schedule(11, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countfour.mp3")
+		sndWOP:Schedule(12, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countthree.mp3")
+		sndWOP:Schedule(13, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\counttwo.mp3")
+		sndWOP:Schedule(14, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countone.mp3")
 	end
 end
 
