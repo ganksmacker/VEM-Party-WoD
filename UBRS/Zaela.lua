@@ -58,7 +58,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 155705 then
 		warnReboundingBlade:Show()
 		timerReboundingBladeCD:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runout.mp3")
 	end
 end
 
@@ -66,7 +65,9 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if UnitExists("boss1") then--Returning from air phase
 		warnZaela:Show()
 		specWarnZaela:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
 	else--Leaving for air phase, may need to delay by a sec or so if boss1 still exists.
 		timerZaelaReturns:Start()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
 	end
 end

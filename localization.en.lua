@@ -9,7 +9,7 @@ local L
 L= DBM:GetModLocalization(1185)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Soulbinder Nyami --
@@ -17,7 +17,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1186)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Azzakel, Vanguard of the Legion --
@@ -25,7 +25,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1216)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Teron'gor --
@@ -33,7 +33,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1225)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Bloodmaul Slag Mines>>> --
@@ -44,7 +44,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(893)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Slave Watcher Crushto --
@@ -52,7 +52,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(888)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Roltall --
@@ -60,7 +60,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(887)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Gug'rokk --
@@ -68,7 +68,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(889)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Grimrail Depot>>> --
@@ -79,7 +79,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1138)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Blackrock Assault Commander --
@@ -87,7 +87,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1163)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Thunderlord General --
@@ -95,7 +95,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1133)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Iron Docks>>> --
@@ -106,7 +106,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1235)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -------------
 -- Grimrail Enforcers --
@@ -114,7 +114,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1236)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Oshir --
@@ -122,7 +122,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1237)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------------
 -- Skulloc, Son of Gruul --
@@ -130,7 +130,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1238)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Overgrown Outpost>>> --
@@ -141,7 +141,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1214)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Ancient Protectors --
@@ -149,7 +149,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1207)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Archmage Sol --
@@ -157,7 +157,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1208)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Xeri'tac --
@@ -165,7 +165,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1209)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Yalnu --
@@ -173,7 +173,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1210)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Shadowmoon Buriel Grounds>>> --
@@ -184,7 +184,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1139)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Nhallish, Feaster of Souls --
@@ -192,7 +192,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1168)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Bonemaw --
@@ -200,7 +200,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1140)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Ner'zhul --
@@ -208,7 +208,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1160)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Skyreach>>> --
@@ -219,7 +219,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(965)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Araknath --
@@ -227,7 +227,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(966)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Rukhran --
@@ -235,7 +235,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(967)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- High Sage Viryx --
@@ -243,7 +243,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(968)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- <<<Upper Blackrock Spire>>> --
@@ -254,7 +254,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1226)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Kyrak --
@@ -262,7 +262,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1227)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Commander Tharbek --
@@ -270,7 +270,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1228)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Ragewind the Untamed --
@@ -278,7 +278,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1229)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })
 -----------------------
 -- Warlord Zaela --
@@ -286,5 +286,5 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1234)
 
 L:SetOptionLocalization({
-	SoundWOP 		= "Voice Warning: Important Skills (By Brilla@金色平原)"
+	SoundWOP 		= "Voice Warning: Important Skills"
 })

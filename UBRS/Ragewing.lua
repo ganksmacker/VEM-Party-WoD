@@ -35,6 +35,7 @@ function mod:OnCombatStart(delay)
 	timerEngulfingFireCD:Start(13-delay)--Needs more data
 	timerSwirlingWindsCD:Start(40-delay)--Needs more data
 	self.vb.firstBreath = false
+	sndWOP:Schedule(12, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\breathsoon.mp3")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -75,6 +76,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		if not self.vb.firstBreath then
 			self.vb.firstBreath = true
 			timerEngulfingFireCD:Start()
+			sndWOP:Schedule(21, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\breathsoon.mp3")
 		end
 	end
 end
