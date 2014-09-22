@@ -28,10 +28,13 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 153810 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
 		warnSolarFlare:Show()
 		specWarnSolarFlare:Show()
 		timerSolarFlare:Start()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobsoon.ogg")
+		if mod:IsDps() then
+			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobkill.ogg")
+		end
 	elseif spellId == 153794 then
 		warnPierceArmor:Show()
 		specWarnPierceArmor:Show()

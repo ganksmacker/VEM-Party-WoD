@@ -35,7 +35,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 154477 then
 		if mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelnow.ogg")
 		end
 		warnSWP:Show(args.destName)
 		specWarnSWP:Show(args.destName)
@@ -52,7 +52,7 @@ function mod:SPELL_CAST_START(args)
 		timerTornSpiritsCD:Start()
 		timerSoulVesselCD:Start()
 	elseif spellId == 153994 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobsoon.ogg")
 		warnTornSpirits:Show()
 		specWarnTornSpirits:Show()
 	end

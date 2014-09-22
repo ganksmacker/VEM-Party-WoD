@@ -47,7 +47,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnBriarskin:Show(args.sourceName)
 	elseif spellId == 168105 then
 		if mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelnow.ogg")
 		end
 		specWarnRapidTides:Show(args.sourceName)
 	elseif spellId == 168105 then

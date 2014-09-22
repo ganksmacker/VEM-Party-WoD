@@ -38,17 +38,17 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 169179 then
 		warnColossalBlow:Show()
 		specWarnColossalBlow:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\shockwave.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\shockwave.ogg")
 	elseif spellId == 169613 then
 		warnGenesis:Show()
 		specWarnGenesis:Show()
 		timerGenesis:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\ex_so_fscq.mp3")
-		sndWOP:Schedule(10, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countfive.mp3")
-		sndWOP:Schedule(11, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countfour.mp3")
-		sndWOP:Schedule(12, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countthree.mp3")
-		sndWOP:Schedule(13, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\counttwo.mp3")
-		sndWOP:Schedule(14, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\countone.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\ex_so_fscq.ogg")
+		sndWOP:Schedule(10, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countfive.ogg")
+		sndWOP:Schedule(11, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countfour.ogg")
+		sndWOP:Schedule(12, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countthree.ogg")
+		sndWOP:Schedule(13, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\counttwo.ogg")
+		sndWOP:Schedule(14, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countone.ogg")
 	end
 end
 

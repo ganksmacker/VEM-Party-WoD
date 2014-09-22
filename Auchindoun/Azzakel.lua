@@ -84,11 +84,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnCurtainOfFlame:CombinedShow(0.5, targetname)
 		if args:IsPlayer() then
 			specWarnCurtainOfFlame:Show()
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runout.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runout.ogg")
 		else
 			if self:CheckNearby(5, targetname) then
 				specWarnCurtainOfFlameNear:Show(targetname)
-				sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+				sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 			end
 		end
 		if self.Options.RangeFrame then
@@ -123,16 +123,16 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 153764 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobsoon.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobsoon.ogg")
 		warnClawsOfArgus:Show()
 		specWarnClawsOfArgus:Show()
 		timerClawsOfArgus:Start()
 		timerClawsOfArgusCD:Start()
 	elseif spellId == 154221 then
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\kickcast.ogg")
 		else
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\helpkick.ogg")
 		end
 		warnFelblast:Show()
 		specWarnFelblast:Show(args.sourceName)
@@ -141,10 +141,10 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 153616 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnFelPool:Show()
 	elseif spellId == 153726 and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnFelSpark:Show()
 	end
 end
@@ -153,7 +153,7 @@ mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 164081 then
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\changetarget.ogg")
 		end
 		warnSummonFelguard:Show()
 		specWarnSummonFelguard:Show()

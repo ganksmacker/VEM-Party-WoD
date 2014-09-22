@@ -50,7 +50,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 155721 then
 		warnBlackIronCyclone:Show(args.destName)
 		timerBlackIronCycloneCD:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 
@@ -65,9 +65,9 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if UnitExists("boss1") then--Returning from air phase
 		warnZaela:Show()
 		specWarnZaela:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\phasechange.ogg")
 	else--Leaving for air phase, may need to delay by a sec or so if boss1 still exists.
 		timerZaelaReturns:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\phasechange.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\phasechange.ogg")
 	end
 end

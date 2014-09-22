@@ -47,7 +47,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 161833 and args:IsPlayer() and self:AntiSpam(3, 1) then
 		specWarnNoxiousSpit:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 

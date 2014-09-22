@@ -53,10 +53,10 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
 	if spellId == 169495 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnLivingLeaves:Show()
 	elseif spellId == 164294 and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnUncheckedGrowth:Show()
 	end
 end
@@ -70,7 +70,7 @@ end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)--Message doesn't matter, it occurs only for one thing during this fight
 	if mod:IsTank() then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\changetarget.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\changetarget.ogg")
 	end
 	warnUncheckedGrowth:Show()
 	specWarnUncheckedGrowthAdd:Show()

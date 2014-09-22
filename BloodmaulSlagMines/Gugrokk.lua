@@ -37,9 +37,9 @@ function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 150677 then
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\kickcast.ogg")
 		elseif (not mod:IsHealer()) then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\helpkick.ogg")
 		end
 		warnMoltenBlast:Show()
 		specWarnMoltenBlast:Show(args.sourceName)
@@ -49,8 +49,8 @@ function mod:SPELL_CAST_START(args)
 		timerMagmaEruptionCD:Start()
 	elseif spellId == 150755 then
 		if (not mod:IsHealer()) then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
-			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\mobkill.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobkill.ogg")
+			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobkill.ogg")
 		end
 		warnUnstableSlag:Show()
 		specWarnUnstableSlag:Show()
@@ -60,7 +60,7 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 150784 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnMagmaEruption:Show()
 	end
 end

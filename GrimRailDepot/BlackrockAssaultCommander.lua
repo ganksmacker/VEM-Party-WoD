@@ -64,7 +64,7 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 166570 and destGUID == UnitGUID("player") and self:AntiSpam() then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnSlagBlast:Show()
 	end
 end
@@ -82,10 +82,10 @@ end]]
 function mod:UNIT_TARGETABLE_CHANGED()
 	self.vb.phase = self.vb.phase + 1
 	if self.vb.phase == 2 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\ptwo.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\ptwo.ogg")
 		warnPhase2:Show()
 	elseif self.vb.phase == 3 then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\pthree.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\pthree.ogg")
 		warnPhase3:Show()
 	end
 end

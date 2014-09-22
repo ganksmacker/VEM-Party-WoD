@@ -40,14 +40,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnRejuvSerum:Show(args.destName)
 		specWarnRejuvSerum:Show(args.destName)
 		if mod:IsMagicDispeller() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelboss.mp3") --new mp3 needed
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelboss.ogg") --new mp3 needed
 		end
 --		timerRejuvSerumCD:Start()
 	elseif spellId == 162600 then
 		warnToxicFumes:Show(args.destName)
 		specWarnToxicFumes:Show(args.destName)
 		if mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\dispelnow.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelnow.ogg")
 		end
 	end
 end
@@ -57,9 +57,9 @@ function mod:SPELL_CAST_START(args)
 		warnDeblitatingFixation:Show()
 		specWarnDeblitatingFixation:Show(args.sourceName)
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\kickcast.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\kickcast.ogg")
 		elseif (not mod:IsHealer()) then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\helpkick.mp3")
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\helpkick.ogg")
 		end
 	end
 end
@@ -67,7 +67,7 @@ end
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 161288 and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then--Goriona's Void zones
 		specWarnVilebloodSerum:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.Options.CountdownVoice.."\\runaway.mp3")
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
