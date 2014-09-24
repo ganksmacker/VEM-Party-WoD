@@ -52,6 +52,7 @@ local specWarnChaosBolt			= mod:NewSpecialWarningInterrupt(156975, not mod:IsHea
 local specWarnDemonicLeap		= mod:NewSpecialWarningYou(157039)
 local yellDemonicLeap			= mod:NewYell(157039)
 local specWarnChaosWave			= mod:NewSpecialWarningYou(157001)
+local yellWarnChaosWave			= mod:NewYell(157001)
 local specWarnDoom				= mod:NewSpecialWarningTarget(156965, false)
 
 --Basic Abilities
@@ -96,6 +97,8 @@ function mod:ChaosWaveTarget(targetname, uId)
 	warnChaosWave:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnChaosWave:Show()
+		yellWarnChaosWave:Yell()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 
