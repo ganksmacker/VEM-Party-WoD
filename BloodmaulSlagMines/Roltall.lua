@@ -65,23 +65,25 @@ function mod:SPELL_CAST_START(args)
 		timerHeatWave:Start()
 		timerBurningSlagCD:Start()
 	elseif spellId == 152939 and not self.vb.burningSlagCast then--Burning Slag
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 		self.vb.burningSlagCast = true
 		warnBurningSlag:Show()
 		specWarnBurningSlag:Show()
 		timerFieryBoulderCD:Start()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\firecircle.ogg")
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 153227 and args:IsPlayer() and self:AntiSpam(2, 1) then
 		specWarnBurningSlagFire:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 153227 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
 		specWarnBurningSlagFire:Show()
+		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
