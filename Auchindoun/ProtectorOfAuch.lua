@@ -37,7 +37,7 @@ function mod:ShieldTarget(targetname, uId)
 	if targetname == UnitName("player") then
 		yellHolyShield:Yell()
 	end
-	--sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\ex_wod_findshield.ogg")
+	--sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\findshield.ogg")
 end
 
 function mod:OnCombatStart(delay)

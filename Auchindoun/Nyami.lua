@@ -51,6 +51,7 @@ function mod:SPELL_CAST_START(args)
 		timerSoulVessel:Start()
 		timerTornSpiritsCD:Start()
 		timerSoulVesselCD:Start()
+		--sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\findshadow.ogg")
 	elseif spellId == 153994 then
 		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobsoon.ogg")
 		warnTornSpirits:Show()

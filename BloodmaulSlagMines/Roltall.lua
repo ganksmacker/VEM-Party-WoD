@@ -69,7 +69,7 @@ function mod:SPELL_CAST_START(args)
 		warnBurningSlag:Show()
 		specWarnBurningSlag:Show()
 		timerFieryBoulderCD:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\firecircle.ogg")
+		--sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\metersoon.ogg")
 	end
 end
 
