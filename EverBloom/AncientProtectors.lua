@@ -43,11 +43,16 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 168082 then
 		warnRevitalizingWaters:Show()
 		specWarnRevitalizingWaters:Show(args.sourceName)
+		if mod:IsTank() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\kickcast.ogg")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\helpkick.ogg")
+		end
 	elseif spellId == 168041 then
 		specWarnBriarskin:Show(args.sourceName)
 	elseif spellId == 168105 then
-		if mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelnow.ogg")
+		if mod:IsMagicDispeller() then
+			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelboss.ogg")
 		end
 		specWarnRapidTides:Show(args.sourceName)
 	elseif spellId == 168105 then
