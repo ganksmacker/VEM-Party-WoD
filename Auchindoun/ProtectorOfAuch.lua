@@ -29,6 +29,7 @@ local timerHolyShieldCD			= mod:NewNextTimer(47, 153002)
 local timerConsecratedLightCD	= mod:NewNextTimer(7, 153006)
 local timerConsecratedLight		= mod:NewBuffActiveTimer(6.5, 153006)
 local timerFateCD				= mod:NewCDTimer(37, 157465)--Need more logs to confirm
+mod:AddBoolOption("ShieldArrow")
 
 function mod:ShieldTarget(targetname, uId)
 	if not targetname then return end
@@ -36,6 +37,13 @@ function mod:ShieldTarget(targetname, uId)
 	specWarnHolyShield:Show(targetname)
 	if targetname == UnitName("player") then
 		yellHolyShield:Yell()
+	elseif self.Options.ShieldArrow then
+		--local x, y = GetPlayerMapPosition(uId)
+		--if x == 0 and y == 0 then
+		--	SetMapToCurrentZone()
+		--	x, y = GetPlayerMapPosition(uId)
+		--end	
+		DBM.Arrow:ShowRunTo(targetname, 0, 8)
 	end
 	--sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\findshield.ogg")
 end
