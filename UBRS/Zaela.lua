@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1234, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11542 $"):sub(12, -3))
 mod:SetCreatureID(77120)
@@ -50,7 +50,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 155721 then
 		warnBlackIronCyclone:Show(args.destName)
 		timerBlackIronCycloneCD:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 
@@ -65,9 +65,9 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if UnitExists("boss1") then--Returning from air phase
 		warnZaela:Show()
 		specWarnZaela:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\phasechange.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\phasechange.ogg")
 	else--Leaving for air phase, may need to delay by a sec or so if boss1 still exists.
 		timerZaelaReturns:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\phasechange.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\phasechange.ogg")
 	end
 end

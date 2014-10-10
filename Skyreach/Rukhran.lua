@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(967, "DBM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11371 $"):sub(12, -3))
 mod:SetCreatureID(76143)
@@ -31,9 +31,9 @@ function mod:SPELL_CAST_START(args)
 		warnSolarFlare:Show()
 		specWarnSolarFlare:Show()
 		timerSolarFlare:Start()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobsoon.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\mobsoon.ogg")
 		if mod:IsDps() then
-			sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\mobkill.ogg")
+			sndWOP:Schedule(2, DBM.SoundMMPath.."\\mobkill.ogg")
 		end
 	elseif spellId == 153794 then
 		warnPierceArmor:Show()

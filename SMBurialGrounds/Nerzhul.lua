@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1160, "DBM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11370 $"):sub(12, -3))
 mod:SetCreatureID(76407)
@@ -28,16 +28,16 @@ local timerOmenOfDeathCD		= mod:NewNextTimer(10.5, 154350)
 function mod:OnCombatStart(delay)
 	timerOmenOfDeathCD:Start(12-delay)
 	timerRitualOfBonesCD:Start(20-delay)
-	sndWOP:Schedule(15, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\specialsoon.ogg")
-	sndWOP:Schedule(17, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countthree.ogg")
-	sndWOP:Schedule(18, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\counttwo.ogg")
-	sndWOP:Schedule(19, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countone.ogg")
+	sndWOP:Schedule(15, DBM.SoundMMPath.."\\specialsoon.ogg")
+	sndWOP:Schedule(17, DBM.SoundMMPath.."\\countthree.ogg")
+	sndWOP:Schedule(18, DBM.SoundMMPath.."\\counttwo.ogg")
+	sndWOP:Schedule(19, DBM.SoundMMPath.."\\countone.ogg")
 end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 154442 then
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
+			sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
 		end
 		warnMalevolence:Show()
 		specWarnMalevolence:Show()
@@ -56,9 +56,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 		warnRitualOfBones:Show()
 		specWarnRitualOfBones:Show()
 		timerRitualOfBonesCD:Start()
-		sndWOP:Schedule(45.5, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\specialsoon.ogg")
-		sndWOP:Schedule(47.5, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countthree.ogg")
-		sndWOP:Schedule(48.5, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\counttwo.ogg")
-		sndWOP:Schedule(49.5, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countone.ogg")
+		sndWOP:Schedule(45.5, DBM.SoundMMPath.."\\specialsoon.ogg")
+		sndWOP:Schedule(47.5, DBM.SoundMMPath.."\\countthree.ogg")
+		sndWOP:Schedule(48.5, DBM.SoundMMPath.."\\counttwo.ogg")
+		sndWOP:Schedule(49.5, DBM.SoundMMPath.."\\countone.ogg")
 	end
 end

@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1227, "DBM-Party-WoD", 8, 559)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11380 $"):sub(12, -3))
 mod:SetCreatureID(76021)
@@ -40,14 +40,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnRejuvSerum:Show(args.destName)
 		specWarnRejuvSerum:Show(args.destName)
 		if mod:IsMagicDispeller() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelboss.ogg") --new mp3 needed
+			sndWOP:Play(DBM.SoundMMPath.."\\dispelboss.ogg") --new mp3 needed
 		end
 --		timerRejuvSerumCD:Start()
 	elseif spellId == 162600 then
 		warnToxicFumes:Show(args.destName)
 		specWarnToxicFumes:Show(args.destName)
 		if mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\dispelnow.ogg")
+			sndWOP:Play(DBM.SoundMMPath.."\\dispelnow.ogg")
 		end
 	end
 end
@@ -57,9 +57,9 @@ function mod:SPELL_CAST_START(args)
 		warnDeblitatingFixation:Show()
 		specWarnDeblitatingFixation:Show(args.sourceName)
 		if mod:IsTank() then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\kickcast.ogg")
+			sndWOP:Play(DBM.SoundMMPath.."\\kickcast.ogg")
 		elseif (not mod:IsHealer()) then
-			sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\helpkick.ogg")
+			sndWOP:Play(DBM.SoundMMPath.."\\helpkick.ogg")
 		end
 	end
 end
@@ -67,7 +67,7 @@ end
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 161288 and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then--Goriona's Void zones
 		specWarnVilebloodSerum:Show()
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

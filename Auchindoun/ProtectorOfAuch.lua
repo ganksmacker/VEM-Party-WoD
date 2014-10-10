@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1185, "DBM-Party-WoD", 1, 547)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11517 $"):sub(12, -3))
 mod:SetCreatureID(75839)--Soul Construct
@@ -45,7 +45,7 @@ function mod:ShieldTarget(targetname, uId)
 		--end	
 		DBM.Arrow:ShowRunTo(targetname, 0, 8)
 	end
-	--sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\findshield.ogg")
+	--sndWOP:Schedule(3, DBM.SoundMMPath.."\\findshield.ogg")
 end
 
 function mod:OnCombatStart(delay)
@@ -72,7 +72,7 @@ end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 161457 and destGUID == UnitGUID("player") and self:AntiSpam() then
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
 		specWarnSanctifiedGround:Show()
 	end
 end

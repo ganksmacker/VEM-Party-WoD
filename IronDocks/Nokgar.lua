@@ -1,6 +1,6 @@
 local mod	= DBM:NewMod(1235, "DBM-Party-WoD", 4, 558)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:NewSound(nil, true, "SoundWOP")
+local sndWOP	= mod:SoundMM("SoundWOP")
 
 mod:SetRevision(("$Revision: 11689 $"):sub(12, -3))
 mod:SetCreatureID(81297, 81305)
@@ -29,10 +29,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 164426 then
 		warnRecklessProvocation:Show(args.destName)
 		specWarnRecklessProvocation:Show(args.destName)
-		sndWOP:Play("Interface\\AddOns\\"..DBM.SoundMMPath.."\\stopattack.ogg")
-		sndWOP:Schedule(2, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countthree.ogg")
-		sndWOP:Schedule(3, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\counttwo.ogg")
-		sndWOP:Schedule(4, "Interface\\AddOns\\"..DBM.SoundMMPath.."\\countone.ogg")
+		sndWOP:Play(DBM.SoundMMPath.."\\stopattack.ogg")
+		sndWOP:Schedule(2, DBM.SoundMMPath.."\\countthree.ogg")
+		sndWOP:Schedule(3, DBM.SoundMMPath.."\\counttwo.ogg")
+		sndWOP:Schedule(4, DBM.SoundMMPath.."\\countone.ogg")
 		--may be attack boss
 	elseif args.spellId == 164835 then
 		warnEnrage:CombinedShow(0.3, args.destName)

@@ -11,7 +11,7 @@ Before using, define DBM.SoundMMPath and put the audio file into this path.
 
 Example:
 
-"Interface\\AddOns\\"..DBM.SoundMMPath.."\\runaway.ogg"
+DBM.SoundMMPath.."\\runaway.ogg"
 
 What's new:
 
