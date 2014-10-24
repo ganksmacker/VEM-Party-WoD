@@ -1,5 +1,6 @@
 VEM-Party-WoD
 =============
+Update: Now using standard VEM API
 
 DBM w/ voice warning for WoW 6.0
 
@@ -10,8 +11,6 @@ Creative Commons Attribution-Noncommercial-Share Alike 3.0
 Before using, define DBM.SoundMMPath and put the audio file into this path.
 
 Example:
-
-DBM.SoundMMPath.."\\runaway.ogg"
 
 What's new:
 

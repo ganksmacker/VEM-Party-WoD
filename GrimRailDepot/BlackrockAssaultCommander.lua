@@ -1,6 +1,6 @@
-local mod	= DBM:NewMod(1163, "DBM-Party-WoD", 3, 536)
+local mod	= DBM:NewMod(1163, "VEM-Party-WoD", 3, 536)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:SoundMM("SoundWOP")
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11582 $"):sub(12, -3))
 mod:SetCreatureID(79545)
@@ -64,7 +64,7 @@ end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 166570 and destGUID == UnitGUID("player") and self:AntiSpam() then
-		sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\runaway.ogg")
 		specWarnSlagBlast:Show()
 	end
 end
@@ -82,10 +82,10 @@ end]]
 function mod:UNIT_TARGETABLE_CHANGED()
 	self.vb.phase = self.vb.phase + 1
 	if self.vb.phase == 2 then
-		sndWOP:Play(DBM.SoundMMPath.."\\ptwo.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\ptwo.ogg")
 		warnPhase2:Show()
 	elseif self.vb.phase == 3 then
-		sndWOP:Play(DBM.SoundMMPath.."\\pthree.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\pthree.ogg")
 		warnPhase3:Show()
 	end
 end

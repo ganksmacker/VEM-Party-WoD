@@ -1,6 +1,6 @@
-local mod	= DBM:NewMod(1210, "DBM-Party-WoD", 5, 556)
+local mod	= DBM:NewMod(1210, "VEM-Party-WoD", 5, 556)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:SoundMM("SoundWOP")
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11483 $"):sub(12, -3))
 mod:SetCreatureID(83846)
@@ -38,12 +38,12 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 169179 then
 		warnColossalBlow:Show()
 		specWarnColossalBlow:Show()
-		sndWOP:Play(DBM.SoundMMPath.."\\shockwave.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\shockwave.ogg")
 	elseif spellId == 169613 then
 		warnGenesis:Show()
 		specWarnGenesis:Show()
 		timerGenesis:Start()
-		sndWOP:Play(DBM.SoundMMPath.."\\ex_so_fscq.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\ex_so_fscq.ogg")
 		sndWOP:Schedule(10, DBM.SoundMMPath.."\\countfive.ogg")
 		sndWOP:Schedule(11, DBM.SoundMMPath.."\\countfour.ogg")
 		sndWOP:Schedule(12, DBM.SoundMMPath.."\\countthree.ogg")

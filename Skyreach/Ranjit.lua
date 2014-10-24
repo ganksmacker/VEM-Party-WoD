@@ -1,6 +1,6 @@
-local mod	= DBM:NewMod(965, "DBM-Party-WoD", 7, 476)
+local mod	= DBM:NewMod(965, "VEM-Party-WoD", 7, 476)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:SoundMM("SoundWOP")
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11371 $"):sub(12, -3))
 mod:SetCreatureID(75964)
@@ -37,7 +37,7 @@ function mod:SPELL_CAST_START(args)
 		warnFourWinds:Show()
 		specWarnFourWinds:Show()
 		timerFourWinds:Start()
-		sndWOP:Play(DBM.SoundMMPath.."\\wwsoon.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\wwsoon.ogg")
 	elseif spellId == 153315 then
 		warnWindFall:Show()
 	end

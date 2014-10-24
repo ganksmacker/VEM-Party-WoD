@@ -1,6 +1,6 @@
-local mod	= DBM:NewMod(1140, "DBM-Party-WoD", 6, 537)
+local mod	= DBM:NewMod(1140, "VEM-Party-WoD", 6, 537)
 local L		= mod:GetLocalizedStrings()
-local sndWOP	= mod:SoundMM("SoundWOP")
+local sndWOP	= mod:NewSound(nil, "SoundWOP", true)
 
 mod:SetRevision(("$Revision: 11370 $"):sub(12, -3))
 mod:SetCreatureID(75452)
@@ -48,7 +48,7 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 165578 then
 		warnCorpseBreath:Show()
 		timerCorpseBreathCD:Start()
-		sndWOP:Play(DBM.SoundMMPath.."\\breathsoon.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\breathsoon.ogg")
 	end
 end
 
@@ -61,7 +61,7 @@ end
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg:find("spell:153804") then--Slightly faster than combat log
-		sndWOP:Play(DBM.SoundMMPath.."\\runaway.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\runaway.ogg")
 		warnInhale:Show()
 		specWarnInhale:Show()
 		soundInhale:Play()
