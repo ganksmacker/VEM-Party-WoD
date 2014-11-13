@@ -71,9 +71,9 @@ function mod:UNIT_SPELLCAST_CHANNEL_STOP(uId, _, _, _, spellId)
 	if spellId == 168929 then
 		specWarnCannonBarrageE:Show()
 		if not mod:IsHealer() then
-			sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\safenow.ogg")
-		else
 			sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\kickcast.ogg")
+		else
+			sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\safenow.ogg")
 		end
 	end
 end

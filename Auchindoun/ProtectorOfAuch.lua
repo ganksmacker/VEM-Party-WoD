@@ -37,15 +37,15 @@ function mod:ShieldTarget(targetname, uId)
 	specWarnHolyShield:Show(targetname)
 	if targetname == UnitName("player") then
 		yellHolyShield:Yell()
-	elseif self.Options.ShieldArrow then
+	--elseif self.Options.ShieldArrow then
 		--local x, y = GetPlayerMapPosition(uId)
 		--if x == 0 and y == 0 then
 		--	SetMapToCurrentZone()
 		--	x, y = GetPlayerMapPosition(uId)
 		--end	
-		DBM.Arrow:ShowRunTo(targetname, 0, 8)
+		--DBM.Arrow:ShowRunTo(targetname, 0, 8)
 	end
-	--sndWOP:Schedule(3, "Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\findshield.ogg")
+	sndWOP:Schedule(3, "Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\findshield.ogg")
 end
 
 function mod:OnCombatStart(delay)

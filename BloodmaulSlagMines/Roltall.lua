@@ -47,7 +47,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.boulderCount = self.vb.boulderCount + 1
 		warnFieryBoulder:Show(self.vb.boulderCount)
 		specWarnFieryBoulder:Show()
-		--sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\meteorsoon.ogg")
+		sndWOP:Play("Interface\\AddOns\\"..VEM.Options.CountdownVoice.."\\meteorsoon.ogg")
 		if self.vb.boulderCount == 3 then
 			timerHeatWaveCD:Start()
 			self.vb.boulderCount = 0
