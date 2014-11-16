@@ -27,9 +27,6 @@ local warnGaseousVolley				= mod:NewSpellAnnounce(169248, 3)
 local specWarnConsume				= mod:NewSpecialWarningSpell(169248)
 local specWarnGaseousVolley			= mod:NewSpecialWarningSpell(169382, nil, nil, nil, 2)
 
---local timerConsumeCD				= mod:NewCDTimer(34, 115297)--34-40 sec variation? is it even CD based? Health based?
---local timerGaseousVolleyCD			= mod:NewCDTimer(25, 115297)--25-40. variation is too great, not using this timer until more data to find out why its all over place.
-
 mod.vb.spiderlingCount = 8
 mod.vb.phase2 = false
 
@@ -45,13 +42,11 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 169248 then
 		warnConsume:Show()
 		specWarnConsume:Show()
---		timerConsumeCD:Start()
 	elseif spellId == 169382 then
 		warnGaseousVolley:Show()
 		specWarnGaseousVolley:Show()
 	end
 end
-
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
@@ -70,7 +65,5 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if not self.vb.phase2 then
 		self.vb.phase2 = true
 		warnPhase2:Show()
---		timerGaseousVolleyCD:Start(18)--18 one pull 19 another. Very small sample size (2 pulls, needs verification)
---		timerConsumeCD:Start()--38 one pull 43 next. Very small sample size (2 pulls, needs verification)
 	end
 end
