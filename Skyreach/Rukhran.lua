@@ -10,7 +10,7 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 153810 153794"
+	"SPELL_CAST_START 153810 153794 159382"
 )
 
 local warnSolarFlare			= mod:NewSpellAnnounce(153810, 3)
@@ -21,7 +21,6 @@ local specWarnSolarFlare		= mod:NewSpecialWarningSwitch(153810, false)--Not ever
 local specWarnPierceArmor		= mod:NewSpecialWarningSpell(153794, mod:IsTank())
 local specWarnQuills			= mod:NewSpecialWarningSpell(159382, nil, nil, nil, 2)
 
-local timerSolarFlare			= mod:NewCDTimer(18, 153810)
 local timerSolarFlareCD			= mod:NewCDTimer(18, 153810)
 local timerQuillsCD				= mod:NewCDTimer(64, 159382)--Needs review
 
